@@ -1,0 +1,566 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio - Designer</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Georgia', serif;
+            background: linear-gradient(180deg, #5a1a1a 0%, #2a0a0a 100%);
+            color: #fff;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        /* Hero Section */
+        .hero {
+            position: relative;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 60px 40px;
+            background: linear-gradient(135deg, #6b1a1a 0%, #3a0a0a 100%);
+        }
+
+        .hero-content {
+            flex: 1;
+            z-index: 2;
+        }
+
+        .hero h1 {
+            font-size: 120px;
+            font-weight: 300;
+            letter-spacing: -2px;
+            margin-bottom: 20px;
+            line-height: 0.9;
+        }
+
+        .hero-tags {
+            margin: 30px 0;
+        }
+
+        .hero-tags span {
+            display: block;
+            font-size: 48px;
+            font-weight: 700;
+            letter-spacing: 2px;
+            margin: 5px 0;
+        }
+
+        .hero-image {
+            flex: 1;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .hero-image img {
+            max-width: 500px;
+            width: 100%;
+            height: auto;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+        }
+
+        .hero-title-overlay {
+            position: absolute;
+            right: -50px;
+            font-size: 180px;
+            font-weight: 900;
+            color: rgba(255,255,255,0.1);
+            letter-spacing: -5px;
+            line-height: 0.8;
+            text-align: right;
+        }
+
+        .contact-info {
+            position: absolute;
+            bottom: 40px;
+            left: 40px;
+            font-size: 14px;
+        }
+
+        .contact-info a {
+            color: #fff;
+            text-decoration: none;
+            opacity: 0.8;
+            transition: opacity 0.3s;
+        }
+
+        .contact-info a:hover {
+            opacity: 1;
+        }
+
+        .name-tag {
+            position: absolute;
+            top: 40px;
+            right: 40px;
+            font-size: 18px;
+            letter-spacing: 4px;
+        }
+
+        /* About Section */
+        .about-section {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            padding: 80px 40px;
+            background: #4a1515;
+        }
+
+        .about-card {
+            background: rgba(0,0,0,0.3);
+            padding: 40px;
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+        }
+
+        .about-card h2 {
+            font-size: 48px;
+            font-weight: 300;
+            margin-bottom: 30px;
+            letter-spacing: 2px;
+        }
+
+        .about-card p {
+            font-size: 16px;
+            line-height: 1.8;
+            opacity: 0.9;
+            margin-bottom: 15px;
+        }
+
+        .avatar {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            margin-bottom: 30px;
+            border: 4px solid rgba(255,255,255,0.2);
+        }
+
+        /* Services Section */
+        .services-section {
+            padding: 80px 40px;
+            background: #3a1010;
+        }
+
+        .services-section h2 {
+            font-size: 64px;
+            font-weight: 300;
+            margin-bottom: 60px;
+            letter-spacing: 2px;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px;
+        }
+
+        .service-item {
+            background: rgba(0,0,0,0.3);
+            padding: 30px;
+            border-radius: 15px;
+            border: 1px solid rgba(255,255,255,0.1);
+            transition: transform 0.3s, border-color 0.3s;
+        }
+
+        .service-item:hover {
+            transform: translateY(-5px);
+            border-color: rgba(255,255,255,0.3);
+        }
+
+        .service-number {
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 15px;
+            color: #ff9999;
+        }
+
+        .service-item h3 {
+            font-size: 24px;
+            margin-bottom: 15px;
+        }
+
+        .service-item p {
+            font-size: 14px;
+            opacity: 0.8;
+            line-height: 1.6;
+        }
+
+        /* Projects Section */
+        .projects-section {
+            padding: 80px 40px;
+            background: #5a1a1a;
+        }
+
+        .projects-section h2 {
+            font-size: 64px;
+            font-weight: 300;
+            margin-bottom: 60px;
+            letter-spacing: 2px;
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 40px;
+            margin-bottom: 60px;
+        }
+
+        .project-card {
+            background: rgba(0,0,0,0.3);
+            border-radius: 20px;
+            overflow: hidden;
+            transition: transform 0.3s;
+        }
+
+        .project-card:hover {
+            transform: scale(1.02);
+        }
+
+        .project-image {
+            width: 100%;
+            height: 300px;
+            background: rgba(0,0,0,0.5);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: rgba(255,255,255,0.3);
+            font-size: 18px;
+            overflow: hidden;
+        }
+
+        .project-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .project-info {
+            padding: 30px;
+        }
+
+        .project-info h3 {
+            font-size: 28px;
+            margin-bottom: 15px;
+        }
+
+        .project-info p {
+            font-size: 14px;
+            opacity: 0.8;
+            line-height: 1.6;
+        }
+
+        /* Other Projects */
+        .other-projects {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+
+        .small-project {
+            background: rgba(0,0,0,0.3);
+            border-radius: 15px;
+            overflow: hidden;
+        }
+
+        .small-project-image {
+            width: 100%;
+            height: 200px;
+            background: rgba(0,0,0,0.5);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: rgba(255,255,255,0.3);
+            font-size: 14px;
+            overflow: hidden;
+        }
+
+        .small-project-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .small-project-info {
+            padding: 20px;
+        }
+
+        .small-project-info h4 {
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+
+        /* Contact Section */
+        .contact-section {
+            padding: 80px 40px;
+            background: #2a0a0a;
+            text-align: center;
+        }
+
+        .contact-section h2 {
+            font-size: 64px;
+            font-weight: 300;
+            margin-bottom: 40px;
+            letter-spacing: 2px;
+        }
+
+        .contact-section p {
+            font-size: 18px;
+            margin-bottom: 20px;
+            opacity: 0.9;
+        }
+
+        .qr-codes {
+            display: flex;
+            justify-content: center;
+            gap: 60px;
+            margin-top: 60px;
+        }
+
+        .qr-code {
+            text-align: center;
+        }
+
+        .qr-placeholder {
+            width: 200px;
+            height: 200px;
+            background: rgba(255,255,255,0.9);
+            border-radius: 15px;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #333;
+            font-size: 14px;
+            overflow: hidden;
+        }
+
+        .qr-placeholder img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+
+        .qr-label {
+            font-size: 14px;
+            opacity: 0.8;
+        }
+
+        /* Decorative Elements */
+        .flower-decoration {
+            position: absolute;
+            opacity: 0.3;
+            pointer-events: none;
+        }
+
+        @media (max-width: 768px) {
+            .hero {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .hero h1 {
+                font-size: 60px;
+            }
+
+            .hero-tags span {
+                font-size: 32px;
+            }
+
+            .about-section,
+            .services-grid,
+            .projects-grid,
+            .other-projects {
+                grid-template-columns: 1fr;
+            }
+
+            .qr-codes {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Portfolio</h1>
+            <div class="hero-tags">
+                <span>About</span>
+                <span>Me</span>
+            </div>
+        </div>
+        <div class="hero-image">
+            <img src="images/front pagePic.png" alt="Designer Portrait">
+            <div class="hero-title-overlay"><-<br>me^^</div>
+        </div>
+        <div class="contact-info">
+            <p>Instagram: <a href="#">@Kaiz_den</a></p>
+            <p>Facebook: <a href="#">@Kyz Denise</a></p>
+        </div>
+        <div class="name-tag">Kyz Denise L. Aquino BSIT1E</div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about-section">
+        <div class="about-card">
+            <img src="images/Mukhako.png" alt="Avatar" class="avatar">
+            <h2>About me?</h2>
+            <p>My name is Kyz Denise L. Aquino from BSIT 1E.</p>
+            <p>I'm an active student leader of CSPC in the department of Computer Studies.</p>
+            <p>I specialise in the creative part of the organisations, I've been in.</p>
+        </div>
+        <div class="about-card">
+            <h2>What I commission</h2>
+            <div class="service-item">
+                <div class="service-number">01</div>
+                <h3>Pubmat</h3>
+                <p>I specialise in making pubmats that are posted in different social medias. I use Canva and Photoshop</p>
+            </div>
+            <div class="service-item" style="margin-top: 20px;">
+                <div class="service-number">02</div>
+                <h3>Artwork</h3>
+                <p>I can make whatever you want! for example; a character you like and draw them in a specific artstyle you would like.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services-section">
+        <div class="container">
+            <h2>Work Stages</h2>
+            <div class="services-grid">
+                <div class="service-item">
+                    <div class="service-number">01</div>
+                    <h3>INQUIRY</h3>
+                    <p>The client reaches out explaining what they want—project type, style, size, deadlines, and any important details.</p>
+                </div>
+                <div class="service-item">
+                    <div class="service-number">02</div>
+                    <h3>AGREEMENT</h3>
+                    <p>You discuss scope, pricing, rights/usage, deadlines, and expectations. Both parties confirm the terms (written agreement, email confirmation, or contract).</p>
+                </div>
+                <div class="service-item">
+                    <div class="service-number">03</div>
+                    <h3>DOWN PAYMENT</h3>
+                    <p>Often a deposit (30–50%) is taken before work begins. This ensures commitment from both sides.</p>
+                </div>
+                <div class="service-item">
+                    <div class="service-number">04</div>
+                    <h3>DRAFT PHASE</h3>
+                    <p>You create and share a rough sketch, layout, or concept for approval. Client can request minor revisions here.</p>
+                </div>
+                <div class="service-item">
+                    <div class="service-number">05</div>
+                    <h3>FINAL PAYMENT</h3>
+                    <p>Once the client approves the final work, they send the remaining payment. After payment, you deliver the final unwatermarked files or physical piece.</p>
+                </div>
+                <div class="service-item">
+                    <div class="service-number">06</div>
+                    <h3>PROJECT DELIVERY</h3>
+                    <p>You complete the final piece and deliver it in the agreed format (digital files, prints, etc.). Watermarked previews may be sent until payment is complete.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section class="projects-section">
+        <div class="container">
+            <h2>MY WORKS</h2>
+            <div class="projects-grid">
+                <div class="project-card">
+                    <div class="project-image">
+                        <img src="images/contemporary dance.png" alt="Project 1">
+                    </div>
+                    <div class="project-info">
+                        <h3>Contemporary Dance Pubmat</h3>
+                        <p>This was posted on the official page of the CCS-CSC for SIKLAB 2025</p>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <div class="project-image">
+                        <video src="videos/The_last_fight_of_rivendale.mp4" controls></video> alt="Project 2">
+                    </div>
+                    <div class="project-info">
+                        <h3>Speedpaint</h3>
+                        <p>this is the process on how I make my artworks</p>
+                    </div>
+                </div>
+            </div>
+
+            <h2 style="margin-top: 80px;">OTHER WORKS</h2>
+            <div class="other-projects">
+                <div class="small-project">
+                    <div class="small-project-image">
+                        <img src="images/Hermes empiressmp.png" alt="Small Project 1">
+                    </div>
+                    <div class="small-project-info">
+                        <h4>Character Info</h4>
+                    </div>
+                </div>
+                <div class="small-project">
+                    <div class="small-project-image">
+                        <img src="images/CCS - CSC shirt (black).png" alt="Small Project 2">
+                    </div>
+                    <div class="small-project-info">
+                        <h4>A draft of CCS's Shirt (the final is still on the works)</h4>
+                    </div>
+                </div>
+                <div class="small-project">
+                    <div class="small-project-image">
+                        <img src="images/poster para ki maica_20250924_001549_0000.png" alt="Small Project 3">
+                    </div>
+                    <div class="small-project-info">
+                        <h4>Commisioned Work</h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact-section">
+        <div class="container">
+            <h2>Contacts</h2>
+            <p>Want to commission?</p>
+            <p>you can contact me by scanning the following QR codes below</p>
+            
+            <div class="qr-codes">
+                <div class="qr-code">
+                    <div class="qr-placeholder">
+                        <img src="images/Instagram_Account-1024.jpeg" alt="QR Code">
+                    </div>
+                    <p class="qr-label">Instagram</p>
+                    <p class="qr-label">@kaiz_den</p>
+                </div>
+                <div class="qr-code">
+                    <div class="qr-placeholder">
+                        <img src="images/Facebook_Account-1024.jpeg" alt="QR Code">
+                    </div>
+                    <p class="qr-label">Facebook</p>
+                    <p class="qr-label">@Kyz Denise</p>
+                </div>
+            </div>
+            
+            <div class="name-tag" style="position: relative; margin-top: 60px;">Kyz Denise L. Aquino</div>
+        </div>
+    </section>
+</body>
+</html>
